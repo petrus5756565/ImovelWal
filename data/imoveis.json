@@ -11,12 +11,13 @@
     "suites": "1",
     "banheiros": "2",
     "vagas": "2",
-    "area": "95",
     "descricao": "Apartamento amplo e bem iluminado, próximo a comércio e escolas. Sacada com churrasqueira, piso em porcelanato e armários planejados na cozinha.",
     "whatsapp": "",
     "destaque": true,
     "fotos": [],
-    "criado_em": "2026-07-01T12:00:00"
+    "criado_em": "2026-07-01T12:00:00",
+    "area_construida": "95",
+    "area_terreno": ""
   },
   {
     "id": "exemplo02",
@@ -30,11 +31,12 @@
     "suites": "1",
     "banheiros": "3",
     "vagas": "2",
-    "area": "180",
     "descricao": "Casa térrea em condomínio com área de lazer completa, portaria 24h e amplo quintal.",
     "whatsapp": "",
     "destaque": true,
     "fotos": [],
-    "criado_em": "2026-07-02T12:00:00"
+    "criado_em": "2026-07-02T12:00:00",
+    "area_construida": "180",
+    "area_terreno": ""
   }
 ]

@@ -40,8 +40,15 @@
         <input type="text" name="preco" value="{{ imovel.preco if imovel else '' }}" placeholder="Ex: 350.000,00">
       </div>
       <div class="campo">
-        <label>Área (m²)</label>
-        <input type="text" name="area" value="{{ imovel.area if imovel else '' }}">
+        <label>Área construída (m²)</label>
+        <input type="text" name="area_construida" value="{{ imovel.area_construida if imovel else '' }}" placeholder="Ex: 95">
+      </div>
+    </div>
+
+    <div class="linha duas">
+      <div class="campo">
+        <label>Área do terreno (m²)</label>
+        <input type="text" name="area_terreno" value="{{ imovel.area_terreno if imovel else '' }}" placeholder="Deixe em branco se não for casa/terreno">
       </div>
     </div>
 

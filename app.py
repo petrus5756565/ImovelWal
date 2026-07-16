@@ -231,7 +231,8 @@ def admin_novo_imovel():
             "suites": request.form.get("suites", "").strip(),
             "banheiros": request.form.get("banheiros", "").strip(),
             "vagas": request.form.get("vagas", "").strip(),
-            "area": request.form.get("area", "").strip(),
+            "area_construida": request.form.get("area_construida", "").strip(),
+            "area_terreno": request.form.get("area_terreno", "").strip(),
             "descricao": request.form.get("descricao", "").strip(),
             "whatsapp": request.form.get("whatsapp", "").strip(),
             "destaque": bool(request.form.get("destaque")),
@@ -267,7 +268,8 @@ def admin_editar_imovel(imovel_id):
         imovel["suites"] = request.form.get("suites", "").strip()
         imovel["banheiros"] = request.form.get("banheiros", "").strip()
         imovel["vagas"] = request.form.get("vagas", "").strip()
-        imovel["area"] = request.form.get("area", "").strip()
+        imovel["area_construida"] = request.form.get("area_construida", "").strip()
+        imovel["area_terreno"] = request.form.get("area_terreno", "").strip()
         imovel["descricao"] = request.form.get("descricao", "").strip()
         imovel["whatsapp"] = request.form.get("whatsapp", "").strip()
         imovel["destaque"] = bool(request.form.get("destaque"))
