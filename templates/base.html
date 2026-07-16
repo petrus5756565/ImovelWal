@@ -25,7 +25,9 @@
 
   <header class="principal">
     <div class="container">
-      <a class="logo" href="{{ url_for('index') }}">{{ site.nome }}</a>
+      <a class="logo" href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='img/logo-wal.jpg') }}" alt="{{ site.nome }}" class="logo-img">
+      </a>
       <nav class="menu" id="menuPrincipal">
         <ul>
           <li><a href="{{ url_for('index') }}">Home</a></li>

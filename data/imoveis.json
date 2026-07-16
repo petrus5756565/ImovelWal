@@ -38,5 +38,27 @@
     "criado_em": "2026-07-02T12:00:00",
     "area_construida": "180",
     "area_terreno": ""
+  },
+  {
+    "id": "1610d7637a",
+    "titulo": "yuii",
+    "tipo": "venda",
+    "categoria": "jjj",
+    "preco": "237.330000",
+    "cidade": "Curitiba",
+    "bairro": "Batel",
+    "quartos": "8",
+    "suites": "7",
+    "banheiros": "6",
+    "vagas": "7",
+    "area_construida": "78",
+    "area_terreno": "789",
+    "descricao": "vbncfbfcd",
+    "whatsapp": "786786",
+    "destaque": false,
+    "fotos": [
+      "775fb596_Captura-de-tela-2023-08-03-154556.jpg"
+    ],
+    "criado_em": "2026-07-16T03:36:27.461268"
   }
 ]
