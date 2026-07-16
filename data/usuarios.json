@@ -1,0 +1,6 @@
+[
+  {
+    "usuario": "corretora",
+    "senha_hash": "scrypt:32768:8:1$oLMNE8O6SLJigiB8$29f316e5baae0d0a1a303427e1eb9bbdea9a9fb4d7fb0306aa899fbd97a9115aeb12ccc88563f74e43dc516347db1d237be8e722501f5e215779671ddd482b05"
+  }
+]

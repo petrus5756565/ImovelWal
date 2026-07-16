@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block titulo %}Painel da Corretora — {{ site.nome }}{% endblock %}
+
+{% block conteudo %}
+<div class="admin-header">
+  <div class="container">
+    <strong>Painel da Corretora</strong>
+    <a class="sair" href="{{ url_for('logout') }}">Sair</a>
+  </div>
+</div>
+
+<div class="admin-wrap">
+  <div class="admin-topo">
+    <h1>Meus imóveis ({{ imoveis|length }})</h1>
+    <a class="btn-primario" href="{{ url_for('admin_novo_imovel') }}">+ Novo imóvel</a>
+  </div>
+
+  {% if imoveis %}
+    <table class="tabela-admin">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Tipo</th>
+          <th>Cidade</th>
+          <th>Preço</th>
+          <th>Fotos</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for im in imoveis %}
+        <tr>
+          <td>{{ im.titulo }}</td>
+          <td>{{ 'Locação' if im.tipo == 'locacao' else 'Venda' }}</td>
+          <td>{{ im.cidade }}</td>
+          <td>{{ im.preco|moeda }}</td>
+          <td>{{ im.fotos|length }}</td>
+          <td class="acoes">
+            <a class="btn-secundario" href="{{ url_for('ver_imovel', imovel_id=im.id) }}" target="_blank">Ver</a>
+            <a class="btn-secundario" href="{{ url_for('admin_editar_imovel', imovel_id=im.id) }}">Editar</a>
+            <form method="post" action="{{ url_for('admin_excluir_imovel', imovel_id=im.id) }}"
+                  onsubmit="return confirm('Excluir este imóvel? Essa ação não pode ser desfeita.');">
+              <button class="btn-perigo" type="submit">Excluir</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="vazio">Nenhum imóvel cadastrado ainda. Clique em "Novo imóvel" para começar.</div>
+  {% endif %}
+</div>
+{% endblock %}

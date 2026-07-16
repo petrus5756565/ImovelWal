@@ -1,0 +1,40 @@
+[
+  {
+    "id": "exemplo01",
+    "titulo": "Apartamento 3 quartos com suíte",
+    "tipo": "venda",
+    "categoria": "Apartamento",
+    "preco": "650.000,00",
+    "cidade": "Curitiba",
+    "bairro": "Batel",
+    "quartos": "3",
+    "suites": "1",
+    "banheiros": "2",
+    "vagas": "2",
+    "area": "95",
+    "descricao": "Apartamento amplo e bem iluminado, próximo a comércio e escolas. Sacada com churrasqueira, piso em porcelanato e armários planejados na cozinha.",
+    "whatsapp": "",
+    "destaque": true,
+    "fotos": [],
+    "criado_em": "2026-07-01T12:00:00"
+  },
+  {
+    "id": "exemplo02",
+    "titulo": "Casa em condomínio fechado",
+    "tipo": "locacao",
+    "categoria": "Casa em Condomínio",
+    "preco": "3.800,00",
+    "cidade": "Curitiba",
+    "bairro": "Santa Felicidade",
+    "quartos": "3",
+    "suites": "1",
+    "banheiros": "3",
+    "vagas": "2",
+    "area": "180",
+    "descricao": "Casa térrea em condomínio com área de lazer completa, portaria 24h e amplo quintal.",
+    "whatsapp": "",
+    "destaque": true,
+    "fotos": [],
+    "criado_em": "2026-07-02T12:00:00"
+  }
+]

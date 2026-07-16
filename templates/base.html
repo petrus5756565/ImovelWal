@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block titulo %}{{ site.nome }}{% endblock %}</title>
+  <meta name="description" content="{{ site.nome }} - imóveis à venda e locação em {{ site.cidade_uf }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container">
+      <a href="tel:{{ site.telefone_fixo }}">📞 {{ site.telefone_fixo }}</a>
+      <a class="whats" href="https://wa.me/{{ site.whatsapp }}" target="_blank">💬 {{ site.whatsapp_exibicao }} WhatsApp</a>
+      <a href="tel:{{ site.plantao }}">☎ Plantão {{ site.plantao }}</a>
+    </div>
+  </div>
+
+  <header class="principal">
+    <div class="container">
+      <a class="logo" href="{{ url_for('index') }}">{{ site.nome.split(' ')[0] }}<span> {{ site.nome.split(' ', 1)[1] if ' ' in site.nome else '' }}</span></a>
+      <nav class="menu" id="menuPrincipal">
+        <ul>
+          <li><a href="{{ url_for('index') }}">Home</a></li>
+          <li><a href="{{ url_for('index') }}?finalidade=venda">Venda</a></li>
+          <li><a href="{{ url_for('index') }}?finalidade=locacao">Locação</a></li>
+          {% if session.get('usuario') %}
+            <li><a href="{{ url_for('admin_dashboard') }}">Área da Corretora</a></li>
+            <li><a href="{{ url_for('logout') }}">Sair</a></li>
+          {% else %}
+            <li><a href="{{ url_for('login') }}">Área da Corretora</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+      <button class="menu-toggle" onclick="document.getElementById('menuPrincipal').classList.toggle('aberto')">☰</button>
+    </div>
+  </header>
+
+  <div class="flash-wrap">
+    {% with mensagens = get_flashed_messages(with_categories=true) %}
+      {% if mensagens %}
+        {% for categoria, msg in mensagens %}
+          <div class="flash {{ categoria }}">{{ msg }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+  </div>
+
+  {% block conteudo %}{% endblock %}
+
+  <footer class="rodape">
+    <div class="container">
+      <div>
+        <h4>{{ site.nome }}</h4>
+        <p>{{ site.endereco }}</p>
+        <p>{{ site.cidade_uf }}</p>
+        <p>{{ site.creci }}</p>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <a href="tel:{{ site.telefone_fixo }}">{{ site.telefone_fixo }}</a>
+        <a href="https://wa.me/{{ site.whatsapp }}" target="_blank">{{ site.whatsapp_exibicao }} (WhatsApp)</a>
+        <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+      </div>
+      <div>
+        <h4>Redes Sociais</h4>
+        <div class="redes">
+          <a href="{{ site.facebook }}" target="_blank" title="Facebook">f</a>
+          <a href="{{ site.instagram }}" target="_blank" title="Instagram">ig</a>
+          <a href="{{ site.youtube }}" target="_blank" title="Youtube">yt</a>
+        </div>
+      </div>
+    </div>
+    <div class="rodape-baixo">© {{ 2026 }} {{ site.nome }} — Todos os direitos reservados.</div>
+  </footer>
+
+  <a class="whats-flutuante" href="https://wa.me/{{ site.whatsapp }}" target="_blank" title="Fale conosco no WhatsApp">💬</a>
+
+</body>
+</html>

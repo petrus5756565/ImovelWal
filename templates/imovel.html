@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block titulo %}{{ imovel.titulo }} — {{ site.nome }}{% endblock %}
+
+{% block conteudo %}
+<section class="imovel-topo">
+  <div class="container">
+    <div>
+      <h1>{{ imovel.titulo }}</h1>
+      <div class="local">{{ imovel.bairro }}{% if imovel.bairro and imovel.cidade %}, {% endif %}{{ imovel.cidade }} · {{ 'Locação' if imovel.tipo == 'locacao' else 'Venda' }}</div>
+    </div>
+    <div class="preco-box">
+      <div class="preco">{{ imovel.preco|moeda }}</div>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  {% if imovel.fotos %}
+    <div class="galeria">
+      <div class="principal">
+        <img src="{{ url_for('static', filename='uploads/' ~ imovel.id ~ '/' ~ imovel.fotos[0]) }}" alt="{{ imovel.titulo }}">
+      </div>
+      <div class="miniaturas">
+        {% for foto in imovel.fotos[1:5] %}
+          <div><img src="{{ url_for('static', filename='uploads/' ~ imovel.id ~ '/' ~ foto) }}" alt="{{ imovel.titulo }}"></div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="imovel-corpo">
+    <div class="imovel-detalhes">
+      <h2>Características</h2>
+      <div class="grid-specs">
+        {% if imovel.categoria %}<div><strong>{{ imovel.categoria }}</strong>Tipo</div>{% endif %}
+        {% if imovel.quartos %}<div><strong>{{ imovel.quartos }}</strong>Dormitórios</div>{% endif %}
+        {% if imovel.suites %}<div><strong>{{ imovel.suites }}</strong>Suítes</div>{% endif %}
+        {% if imovel.banheiros %}<div><strong>{{ imovel.banheiros }}</strong>Banheiros</div>{% endif %}
+        {% if imovel.vagas %}<div><strong>{{ imovel.vagas }}</strong>Vagas de garagem</div>{% endif %}
+        {% if imovel.area %}<div><strong>{{ imovel.area }} m²</strong>Área</div>{% endif %}
+      </div>
+      <h2>Descrição</h2>
+      <p class="descricao">{{ imovel.descricao or 'Sem descrição cadastrada.' }}</p>
+    </div>
+
+    <div class="contato-box">
+      <h3>Tenho interesse</h3>
+      <a class="btn-whats" target="_blank"
+         href="https://wa.me/{{ imovel.whatsapp or site.whatsapp }}?text=Olá! Tenho interesse no imóvel: {{ imovel.titulo }} ({{ request.url }})">
+        💬 Falar no WhatsApp
+      </a>
+      <a class="btn-ligar" href="tel:{{ site.telefone_fixo }}">📞 Ligar para {{ site.telefone_fixo }}</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

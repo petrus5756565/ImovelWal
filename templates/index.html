@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% block titulo %}{{ site.nome }} — Imóveis à venda e locação{% endblock %}
+
+{% block conteudo %}
+<section class="hero">
+  <div class="container">
+    <h1>Encontre seu <span>imóvel ideal</span></h1>
+    <div class="busca-card">
+      <form class="busca-form" method="get" action="{{ url_for('index') }}">
+        <div class="campo">
+          <label>Finalidade</label>
+          <select name="finalidade">
+            <option value="">Todas</option>
+            <option value="venda" {% if finalidade_filtro == 'venda' %}selected{% endif %}>Venda</option>
+            <option value="locacao" {% if finalidade_filtro == 'locacao' %}selected{% endif %}>Locação</option>
+          </select>
+        </div>
+        <div class="campo">
+          <label>Tipo</label>
+          <select name="tipo">
+            <option value="">Todos</option>
+            {% for c in categorias %}
+              <option value="{{ c }}" {% if tipo_filtro == c %}selected{% endif %}>{{ c }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="campo">
+          <label>Cidade</label>
+          <input list="lista-cidades" name="cidade" value="{{ cidade_filtro }}" placeholder="Cidade">
+          <datalist id="lista-cidades">
+            {% for c in cidades %}<option value="{{ c }}">{% endfor %}
+          </datalist>
+        </div>
+        <div class="campo">
+          <label>Bairro</label>
+          <input list="lista-bairros" name="bairro" value="{{ bairro_filtro }}" placeholder="Bairro">
+          <datalist id="lista-bairros">
+            {% for b in bairros %}<option value="{{ b }}">{% endfor %}
+          </datalist>
+        </div>
+        <div class="campo">
+          <label>Valor</label>
+          <select name="valor">
+            <option value="">Todos os Valores</option>
+            <option value="ate230" {% if valor_filtro == 'ate230' %}selected{% endif %}>Até R$ 230.000</option>
+            <option value="230-350" {% if valor_filtro == '230-350' %}selected{% endif %}>R$ 230.000 a R$ 350.000</option>
+            <option value="350-500" {% if valor_filtro == '350-500' %}selected{% endif %}>R$ 350.000 a R$ 500.000</option>
+            <option value="500-750" {% if valor_filtro == '500-750' %}selected{% endif %}>R$ 500.000 a R$ 750.000</option>
+            <option value="750-1000" {% if valor_filtro == '750-1000' %}selected{% endif %}>R$ 750.000 a R$ 1.000.000</option>
+            <option value="1000-1500" {% if valor_filtro == '1000-1500' %}selected{% endif %}>R$ 1.000.000 a R$ 1.500.000</option>
+            <option value="1500-3000" {% if valor_filtro == '1500-3000' %}selected{% endif %}>R$ 1.500.000 a R$ 3.000.000</option>
+            <option value="acima3000" {% if valor_filtro == 'acima3000' %}selected{% endif %}>Acima de R$ 3.000.000</option>
+          </select>
+        </div>
+        <button class="btn-buscar" type="submit">Buscar</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="secao">
+  <div class="container">
+    <h2 class="secao-titulo">Imóveis <span>disponíveis</span></h2>
+
+    {% if finalidade_filtro or tipo_filtro or cidade_filtro or bairro_filtro or valor_filtro %}
+      <p class="filtros-resumo">{{ imoveis|length }} imóvel(is) encontrado(s) — <a href="{{ url_for('index') }}">limpar filtros</a></p>
+    {% endif %}
+
+    {% if imoveis %}
+      <div class="grid-imoveis">
+        {% for im in imoveis %}
+          <a class="card-imovel" href="{{ url_for('ver_imovel', imovel_id=im.id) }}">
+            <div class="foto">
+              {% if im.fotos %}
+                <img src="{{ url_for('static', filename='uploads/' ~ im.id ~ '/' ~ im.fotos[0]) }}" alt="{{ im.titulo }}">
+              {% endif %}
+              <span class="selo {{ 'locacao' if im.tipo == 'locacao' else '' }}">{{ 'Locação' if im.tipo == 'locacao' else 'Venda' }}</span>
+            </div>
+            <div class="info">
+              {% if im.categoria %}<div class="categoria">{{ im.categoria }}</div>{% endif %}
+              <div class="titulo">{{ im.titulo }}</div>
+              <div class="local">{{ im.bairro }}{% if im.bairro and im.cidade %}, {% endif %}{{ im.cidade }}</div>
+              <div class="specs">
+                {% if im.quartos %}<span>🛏 {{ im.quartos }} dorm.</span>{% endif %}
+                {% if im.suites %}<span>🚪 {{ im.suites }} suíte(s)</span>{% endif %}
+                {% if im.vagas %}<span>🚗 {{ im.vagas }} vaga(s)</span>{% endif %}
+                {% if im.area %}<span>📐 {{ im.area }} m²</span>{% endif %}
+              </div>
+              <div class="preco">{{ im.preco|moeda }}</div>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="vazio">Nenhum imóvel encontrado com esses filtros.</div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
