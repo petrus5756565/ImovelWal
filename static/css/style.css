@@ -137,12 +137,14 @@ nav.menu a.ativo {
 .hero h1 span { color: var(--dourado-claro); }
 
 .busca-card {
-  background: var(--branco);
-  border-radius: var(--raio);
-  padding: 22px;
-  box-shadow: 0 20px 45px rgba(0,0,0,.22);
-  max-width: 1000px;
-  margin: 0 auto;
+    background: var(--branco);
+    border-radius: var(--raio);
+    padding: 22px;
+    box-shadow: 0 20px 45px rgba(0,0,0,.22);
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 .busca-form {
   display: grid;
