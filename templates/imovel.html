@@ -31,29 +31,4 @@
         </div>
 
         {% if imovel.fotos|length > 1 %}
-        <button type="button" class="carrossel-seta seta-proxima" aria-label="Próxima foto">&#10095;</button>
-        <div class="carrossel-contador"><span class="atual">1</span> / {{ imovel.fotos|length }}</div>
-        {% endif %}
-      </div>
-
-      {% if imovel.fotos|length > 1 %}
-      <div class="carrossel-miniaturas">
-        {% for foto in imovel.fotos %}
-          <div class="miniatura{% if loop.first %} ativa{% endif %}" data-slide="{{ loop.index0 }}">
-            <img src="{{ url_for('static', filename='uploads/' ~ imovel.id ~ '/' ~ foto) }}" alt="Miniatura {{ loop.index }}">
-          </div>
-        {% endfor %}
-      </div>
-      {% endif %}
-    </div>
-  {% endif %}
-
-  <div class="imovel-corpo">
-    <div class="imovel-detalhes">
-      <h2>Características</h2>
-      <div class="grid-specs">
-        {% if imovel.categoria %}<div><strong>{{ imovel.categoria }}</strong>Tipo</div>{% endif %}
-        {% if imovel.quartos %}<div><strong>{{ imovel.quartos }}</strong>Dormitórios</div>{% endif %}
-        {% if imovel.suites %}<div><strong>{{ imovel.suites }}</strong>Suítes</div>{% endif %}
-        {% if imovel.banheiros %}<div><strong>{{ imovel.banheiros }}</strong>Banheiros</div>{% endif %}
-        {% if imovel.vagas
+        <button type="button" class="carrossel-seta seta-proxima" aria-label="Próxima
