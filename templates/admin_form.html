@@ -22,7 +22,7 @@
         <input type="text" name="titulo" required value="{{ imovel.titulo if imovel else '' }}" placeholder="Ex: Apartamento 3 quartos no Centro">
       </div>
       <div class="campo">
-        <label>Finalidade</label>
+        <label>Finalidade</label> 
         <select name="tipo">
           <option value="venda" {% if imovel and imovel.tipo == 'venda' %}selected{% endif %}>Venda</option>
           <option value="locacao" {% if imovel and imovel.tipo == 'locacao' %}selected{% endif %}>Locação</option>

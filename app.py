@@ -26,8 +26,10 @@ app.config["MAX_CONTENT_LENGTH"] = 20 * 1024 * 1024  # 20MB por requisição
 # ---------- dados da imobiliária (edite aqui) ----------
 SITE = {
     "nome": os.environ.get("SITE_NOME", "Nome da Imobiliária"),
-    "telefone_fixo": os.environ.get("SITE_TELEFONE_FIXO", "(41) 3333-4444"),
-    "whatsapp": os.environ.get("SITE_WHATSAPP", "5541999998888"),
+    # Para links (tel:/wa.me/) precisa ser apenas números (com DDI). Ex: 5541999998888
+    "telefone_fixo": os.environ.get("SITE_TELEFONE_FIXO", "554799344115"),
+    "whatsapp": os.environ.get("SITE_WHATSAPP", "554799344115"),
+
     "whatsapp_exibicao": os.environ.get("SITE_WHATSAPP_EXIBICAO", "(41) 99999-8888"),
     "plantao": os.environ.get("SITE_PLANTAO", "(41) 98888-7777"),
     "email": os.environ.get("SITE_EMAIL", "contato@suaimobiliaria.com.br"),
@@ -38,6 +40,7 @@ SITE = {
     "instagram": os.environ.get("SITE_INSTAGRAM", "#"),
     "youtube": os.environ.get("SITE_YOUTUBE", "#"),
 }
+
 
 
 @app.context_processor
