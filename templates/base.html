@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block titulo %}Nome da Imobiliária{% endblock %}</title>
-    <meta name="description" content="Nome da Imobiliária - imóveis à venda e locação em Curitiba - PR">
+    <title>{% block titulo %}Imobiliária Wal{% endblock %}</title>
+    <meta name="description" content="Imobiliária Wal - imóveis à venda e locação em São Bento do Sul - SC">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
@@ -28,7 +28,7 @@
     <header class="principal">
         <div class="container">
             <a class="logo" href="{{ url_for('index') }}">
-                <img src="{{ url_for('static', filename='logo.png') }}" alt="Nome da Imobiliária" class="logo-img">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Imobiliária Wal" class="logo-img">
             </a>
             <nav class="menu" id="menuPrincipal">
                 <ul>
@@ -67,7 +67,7 @@
             <div>
                 <h4>Waltraud Blunk</h4>
                 <p>Rua Exemplo, 123 - Bairro</p>
-                <p>Curitiba - PR</p>
+                <p>São Bento do Sul - SC</p>
                 <p>CRECI: 025676</p>
             </div>
             <div>
@@ -79,7 +79,6 @@
             <div>
                 <h4>Redes Sociais</h4>
                 <div class="redes">
-                    <!-- Substitua o '#' pelos links reais das redes sociais se possuir -->
                     <a href="#" target="_blank" title="Facebook">
                         <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.5h-1.3c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0 0 22 12z"/></svg>
                     </a>
@@ -95,7 +94,7 @@
             </div>
         </div>
         <div class="rodape-baixo" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding-top: 15px;">
-            <span>&copy; 2026 Nome da Imobiliária — Todos os direitos reservados.</span>
+            <span>&copy; 2026 Imobiliária Wal — Todos os direitos reservados.</span>
             <span style="font-size: 0.85rem;">Desenvolvido por: <a href="https://wa.me" target="_blank" rel="noopener noreferrer" style="color: inherit; font-weight: bold; text-decoration: underline;">Contatar Desenvolvedor</a></span>
         </div>
     </footer>
