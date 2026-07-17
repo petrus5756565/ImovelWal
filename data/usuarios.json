@@ -1,6 +1,6 @@
-[
+﻿[
   {
     "usuario": "corretora",
-    "senha_hash": "scrypt:32768:8:1$mmJWufTZBA4qg2d8$977af567a4e5527a6a358bdce6920b859f69707b932a712f0f8e668b5695c0dcdd1106a8feb20cda23cd80651b7968d3c2702ef535b1199115f0e2cb07f1f816"
+    "senha_hash": "scrypt:32768:8:1$GxWVbyfICfUTPwH8$26876343110a5ad13d279c1a5805b8495db729779ae8fd6c19fd187b124249f1de20d22b4d4ea047f8710bde86eeebd8761c1fa067bbefee718b76daf38cc9be"
   }
 ]
