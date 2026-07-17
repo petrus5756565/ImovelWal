@@ -492,7 +492,8 @@ footer.rodape a:hover { color: var(--dourado-claro); }
   position: absolute; top: 4px; right: 4px; background: rgba(164,34,44,.9); color: #fff;
   border: none; border-radius: 4px; font-size: 11px; padding: 3px 6px;
 }
-
+         
+     
 @media (max-width: 700px) {
   .form-imovel .linha, .form-imovel .linha.duas { grid-template-columns: 1fr; }
 }
