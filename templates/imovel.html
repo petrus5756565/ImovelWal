@@ -1,34 +1,88 @@
-{% extends "base.html" %}
-{% block titulo %}{{ imovel.titulo }} — {{ site.nome }}{% endblock %}
+{% extends "base.html" %} 
 
-{% block conteudo %}
-<section class="imovel-topo">
-  <div class="container">
-    <div>
-      <h1>{{ imovel.titulo }}</h1>
-      <div class="local">{{ imovel.bairro }}{% if imovel.bairro and imovel.cidade %}, {% endif %}{{ imovel.cidade }} · {{ 'Locação' if imovel.tipo == 'locacao' else 'Venda' }}</div>
-    </div>
-    <div class="preco-box">
-      <div class="preco">{{ imovel.preco|moeda }}</div>
-    </div>
-  </div>
-</section>
+{% block titulo %}{{ imovel.titulo }} — Imobiliária Wal{% endblock %} 
 
-<div class="container">
-  {% if imovel.fotos %}
-    <div class="galeria-carrossel">
-      <div class="carrossel-principal">
-        {% if imovel.fotos|length > 1 %}
-        <button type="button" class="carrossel-seta seta-anterior" aria-label="Foto anterior">&#10094;</button>
-        {% endif %}
+{% block conteudo %} 
+<section class="imovel-topo"> 
+    <div class="container"> 
+        <div> 
+            <h1>{{ imovel.titulo }}</h1> 
+            <div class="local">
+                {{ imovel.bairro }}{% if imovel.bairro and imovel.cidade %}, {% endif %}{{ imovel.cidade }} · {{ 'Locação' if imovel.tipo == 'locacao' else 'Venda' }}
+            </div> 
+        </div> 
+        <div class="preco-box"> 
+            <div class="preco">{{ imovel.preco|moeda }}</div> 
+        </div> 
+    </div> 
+</section> 
 
-        <div class="carrossel-slides">
-          {% for foto in imovel.fotos %}
-            <div class="slide{% if loop.first %} ativo{% endif %}">
-              <img src="{{ url_for('static', filename='uploads/' ~ imovel.id ~ '/' ~ foto) }}" alt="{{ imovel.titulo }} - foto {{ loop.index }}">
+<div class="container m-topo"> 
+    <!-- GALERIA / CARROSSEL -->
+    {% if imovel.fotos %} 
+        <div class="galeria-carrossel"> 
+            <div class="carrossel-principal"> 
+                {% if imovel.fotos|length > 1 %} 
+                    <button type="button" class="carrossel-seta seta-anterior" aria-label="Foto anterior">❮</button> 
+                {% endif %} 
+                
+                <div class="carrossel-slides"> 
+                    {% for foto in imovel.fotos %} 
+                        <div class="slide{% if loop.first %} ativo{% endif %}"> 
+                            <img src="{{ url_for('static', filename='uploads/' ~ imovel.id ~ '/' ~ foto) }}" alt="{{ imovel.titulo }} - foto {{ loop.index }}"> 
+                        </div> 
+                    {% endfor %} 
+                </div> 
+                
+                {% if imovel.fotos|length > 1 %} 
+                    <button type="button" class="carrossel-seta seta-proxima" aria-label="Próxima foto">❯</button> 
+                {% endif %} 
+            </div> 
+        </div>
+    {% endif %} <!-- CORREÇÃO AQUI: Fecha corretamente o bloco de fotos -->
+
+    <!-- DETALHES E CARACTERÍSTICAS DO IMÓVEL -->
+    <div class="imovel-detalhes-grid" style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px; margin-top: 30px;">
+        
+        <div>
+            <!-- Ícones de características -->
+            <div class="caracteristicas-lista" style="display: flex; gap: 20px; background: #f9f9f9; padding: 15px; border-radius: 8px;">
+                {% if imovel.quartos %}
+                    <span><strong>{{ imovel.quartos }}</strong> Quartos</span>
+                {% endif %}
+                {% if imovel.vagas %}
+                    <span><strong>{{ imovel.vagas }}</strong> Vagas</span>
+                {% endif %}
+                {% if imovel.area %}
+                    <span><strong>{{ imovel.area }}</strong> m² Área</span>
+                {% endif %}
             </div>
-          {% endfor %}
+
+            <!-- Descrição -->
+            <div class="imovel-descricao" style="margin-top: 30px; line-height: 1.6;">
+                <h2>Descrição do Imóvel</h2>
+                <p style="white-space: pre-line;">{{ imovel.descricao }}</p>
+            </div>
         </div>
 
-        {% if imovel.fotos|length > 1 %}
-        <button type="button" class="carrossel-seta seta-proxima" aria-label="Próxima
+        <!-- CAIXA DE CONTATO LATERAL -->
+        <div class="contato-card" style="border: 1px solid #ddd; padding: 20px; border-radius: 8px; height: fit-content;">
+            <h3>Fale com a Corretora</h3>
+            <p style="margin-bottom: 15px;">Deseja mais informações sobre este imóvel?</p>
+            
+            <!-- Link do WhatsApp dinâmico com o nome do imóvel atual -->
+            <a href="https://wa.me de%20mais%20informações%20sobre%20o%20imóvel:%20{{ imovel.titulo|urlencode }}" 
+               target="_blank" 
+               class="btn-whats" 
+               style="display: block; text-align: center; background: #25d366; color: white; padding: 12px; border-radius: 5px; text-decoration: none; font-weight: bold; margin-bottom: 10px;">
+               Contato via WhatsApp
+            </a>
+            
+            <a href="tel:4799344115" style="display: block; text-align: center; border: 1px solid #333; color: #333; padding: 10px; border-radius: 5px; text-decoration: none; font-weight: bold;">
+                Ligar para (47) 9934-4115
+            </a>
+        </div>
+
+    </div>
+</div>
+{% endblock %}
